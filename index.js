@@ -1,6 +1,10 @@
 import express from 'express';
 import conexion from './database/database.js';
 import router from './routes/routes.js';
+import cors from 'cors';
+
+//const express = require('express');
+//const cors = require('cors');
 
 async function iniciarServidor(){
     const app = express();
@@ -12,6 +16,7 @@ async function iniciarServidor(){
         return;
     }
 
+    app.use(cors());
     app.use(express.json())
     //app.use(express.urlencoded({extended:false}))
     app.use(router)
